@@ -1,0 +1,66 @@
+def calculate_grade(score):
+  """
+  Calculates the letter grade based on a numerical score (0-10).
+
+  Args:
+      score: The numerical score (0-10).
+
+  Returns:
+      The letter grade corresponding to the score.
+  """
+  if 9 <= score <= 10:
+    return "A"
+  elif 8 <= score < 9:
+    return "B"
+  elif 7 <= score < 8:
+    return "C"
+  elif 6 <= score < 7:
+    return "D"
+  else:
+    return "F"
+
+def calculate_average(grades):
+  """
+  Calculates the average of a list of grades.
+
+  Args:
+      grades: A list of numerical grades.
+
+  Returns:
+      The average of the grades.
+  """
+  if not grades:
+    return 0
+  return sum(grades) / len(grades)
+
+def main():
+  """
+  The main function that handles user interaction and grade management.
+  """
+  student_name = input("Enter student name: ")
+  grades = []
+
+  while True:
+    subject_name = input("Enter subject name (or 'done' to finish): ")
+    if subject_name.lower() == "done":
+      break
+    try:
+      grade = float(input("Enter grade for {} (0-10): ".format(subject_name)))
+      if not 0 <= grade <= 10:
+        print("Invalid grade. Please enter a value between 0 and 10.")
+        continue
+    except ValueError:
+      print("Invalid input. Please enter a numerical grade.")
+      continue
+    grades.append(grade)
+
+  average = calculate_average(grades)
+  letter_grade = calculate_grade(average)
+  print("\nStudent Name:", student_name)
+  for subject, grade in zip(grades, subject_name.split()):
+    print(f"  - {subject}: {grade}")
+  print(f"Average Grade: {average:.2f}")
+  print(f"Letter Grade: {letter_grade}")
+
+if __name__ == "__main__":
+  main()
