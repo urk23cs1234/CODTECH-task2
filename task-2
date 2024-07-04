@@ -1,66 +1,82 @@
-def calculate_grade(score):
+def get_grade(score):
   """
-  Calculates the letter grade based on a numerical score (0-10).
-
-  Args:
-      score: The numerical score (0-10).
-
-  Returns:
-      The letter grade corresponding to the score.
+  This function takes a score and returns the corresponding letter grade.
   """
-  if 9 <= score <= 10:
+  if score >= 90:
     return "A"
-  elif 8 <= score < 9:
+  elif score >= 80:
     return "B"
-  elif 7 <= score < 8:
+  elif score >= 70:
     return "C"
-  elif 6 <= score < 7:
+  elif score >= 60:
     return "D"
   else:
     return "F"
 
 def calculate_average(grades):
   """
-  Calculates the average of a list of grades.
-
-  Args:
-      grades: A list of numerical grades.
-
-  Returns:
-      The average of the grades.
+  This function takes a list of grades and returns the average.
   """
   if not grades:
-    return 0
+    return None
   return sum(grades) / len(grades)
 
 def main():
-  """
-  The main function that handles user interaction and grade management.
-  """
-  student_name = input("Enter student name: ")
-  grades = []
+  # Initialize empty dictionary to store student information
+  student_data = {}
 
   while True:
-    subject_name = input("Enter subject name (or 'done' to finish): ")
-    if subject_name.lower() == "done":
-      break
-    try:
-      grade = float(input("Enter grade for {} (0-10): ".format(subject_name)))
-      if not 0 <= grade <= 10:
-        print("Invalid grade. Please enter a value between 0 and 10.")
-        continue
-    except ValueError:
-      print("Invalid input. Please enter a numerical grade.")
-      continue
-    grades.append(grade)
+    print("\nStudent Grade Management System")
+    print("1. Add Grades")
+    print("2. Calculate Average")
+    print("3. View Overall Grade")
+    print("4. Exit")
 
-  average = calculate_average(grades)
-  letter_grade = calculate_grade(average)
-  print("\nStudent Name:", student_name)
-  for subject, grade in zip(grades, subject_name.split()):
-    print(f"  - {subject}: {grade}")
-  print(f"Average Grade: {average:.2f}")
-  print(f"Letter Grade: {letter_grade}")
+    choice = input("Enter your choice (1-4): ")
+
+    if choice == '1':
+      # Add grades for a subject or assignment
+      subject = input("Enter subject/assignment name: ")
+      score = float(input("Enter score (0-100): "))
+      if subject not in student_data:
+        student_data[subject] = []
+      student_data[subject].append(score)
+      print(f"Grade for {subject} added successfully!")
+
+    elif choice == '2':
+      # Calculate average grade for all subjects
+      all_grades = []
+      for subject, grades in student_data.items():
+        average = calculate_average(grades)
+        if average:
+          print(f"Average for {subject}: {average:.2f}")
+          all_grades.extend(grades)
+      average_overall = calculate_average(all_grades)
+      if average_overall:
+        print(f"Overall Average: {average_overall:.2f}")
+
+    elif choice == '3':
+      # Display overall grade with letter grade or GPA (optional)
+      all_grades = []
+      for subject, grades in student_data.items():
+        average = calculate_average(grades)
+        if average:
+          letter_grade = get_grade(average)
+          print(f"{subject} Average: {average:.2f} ({letter_grade})")
+          all_grades.extend(grades)
+      average_overall = calculate_average(all_grades)
+      if average_overall:
+        letter_grade = get_grade(average_overall)
+        # You can modify this part to calculate GPA based on your institution's scale
+        gpa = average_overall / 10  # Example GPA calculation
+        print(f"Overall Average: {average_overall:.2f} ({letter_grade}) - GPA: {gpa:.2f}")
+
+    elif choice == '4':
+      print("Exiting program...")
+      break
+
+    else:
+      print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
   main()
