@@ -6,13 +6,14 @@ Duration:May to June 2024
 Mentor:Neela Santhosh Kumar
 
 OVERVIEW OF THE PEOJECT
+<img width="373" alt="84DA3125-205C-483B-AD60-71BCA694555C" src="https://github.com/urk23cs1234/CODTECH-task2/assets/156493402/de1f065b-3545-4fa7-82c3-b0f7f619eb30">
+
+<img width="373" alt="84DA3125-205C-483B-AD60-71BCA694555C" src=https://github.com/urk23cs1234/CODTECH-task2/assets/156493402/5f55efaf-2eff-4091-bb2f-96ca3678d761>
+
 
 
 
 Poject:Python program designed to be a student grade management system.
-<img width="373" alt="84DA3125-205C-483B-AD60-71BCA694555C" src="https://github.com/urk23cs1234/CODTECH-task2/assets/156493402/de1f065b-3545-4fa7-82c3-b0f7f619eb30">                       
-![21C59D90-D542-401E-AAF5-13D37679D058](https://github.com/urk23cs1234/CODTECH-task2/assets/156493402/64a79e26-8249-4dd9-ae2a-d455b27d3a50)
-
 
 Objective:
 
